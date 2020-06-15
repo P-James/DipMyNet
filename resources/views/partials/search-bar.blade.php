@@ -1,0 +1,1 @@
+<input type="text" class="w-full rounded-full h-12 outline-none focus:shadow-outline-teal" placeholder="Search a Fishery or Location...">
