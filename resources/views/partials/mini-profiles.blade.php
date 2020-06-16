@@ -1,10 +1,6 @@
 {{-- Filter options --}}
 
-<select name="asdf" id="adf">
-    <option value="Fish">Fish</option>
-    <option value="Facilities">Fac</option>
-    <option value="Test">Test</option>
-</select>
+@include('partials.species-select')
 
 {{-- Fishery results cards --}}
 @foreach ($fisheries as $fishery)
