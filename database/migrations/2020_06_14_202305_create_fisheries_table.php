@@ -15,9 +15,7 @@ class CreateFisheriesTable extends Migration
     {
         Schema::create('fisheries', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->json('address');
-            $table->string('post_code');
+            $table->string('name');;
             $table->string('contact');
             $table->json('opening_times');
             $table->json('prices');
