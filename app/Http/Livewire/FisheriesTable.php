@@ -13,10 +13,11 @@ class FisheriesTable extends Component
     public function render()
     {
         return view('livewire.fisheries-table', [
-            'fisheries' => \App\Fishery::whereLike([
+            'fisheries' => $this->search ? \App\Fishery::whereLike([
                 'name', 'address.line_one', 'address.town', 'address.county', 'address.post_code'
             ], $this->search)
             ->get()
+            : []
         ]);
     }
 }
