@@ -20,12 +20,24 @@ class FisheriesTable extends Component
 
     public function render()
     {
-        return view('livewire.fisheries-table', [
-            'fisheries' => $this->search ? \App\Fishery::whereLike([
+        if (!$this->search ) { 
+            $fisheries = []; 
+        } 
+        if ($this->search && !$this->species) {
+            $fisheries = \App\Fishery::whereLike([
+                'name', 'address.line_one', 'address.line_two', 'address.town', 'address.county', 'address.post_code'
+            ], $this->search)->get();
+        }
+        if ($this->search && $this->species) {
+            $fisheries = \App\Fishery::whereLike([
                 'name', 'address.line_one', 'address.line_two', 'address.town', 'address.county', 'address.post_code'
             ], $this->search)
-                ->get()
-                : []
-        ]);
+            ->get()
+            ->filter(function($fishery) {
+                return ! array_diff($this->species, $fishery->waters->pluck('fish')->toArray());
+            });
+        }
+
+        return view('livewire.fisheries-table', compact('fisheries'));
     }
 }

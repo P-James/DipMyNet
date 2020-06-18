@@ -23,8 +23,12 @@
                 <span class="text-teal-700">Mon - Fri: {{$fishery->opening_times['week']}} / Sat - Sun: {{$fishery->opening_times['weekend']}}</span>
             </div>
             <div class="flex item-center justify-start">
-                <h2 class="w-24 md:w-2/5 flex-shrink-0">Facilities:</h2>
-                <span class="text-teal-700">{{implode(',', $fishery->facilities)}}</span>
+                <h2 class="w-24 md:w-2/5 flex-shrink-0">Waters:</h2>
+                <span class="text-teal-700">@foreach($fishery->waters as $water) {{ $water->type.', ' }} @endforeach</span>
+            </div>
+            <div class="flex item-center justify-start">
+                <h2 class="w-24 md:w-2/5 flex-shrink-0">Species:</h2>
+                <span class="text-teal-700">@foreach($fishery->waters as $water) {{ $water->fish.', ' }} @endforeach</span>
             </div>
             <div class="flex item-center justify-start">
                 <h2 class="w-24 md:w-2/5 flex-shrink-0">Facilities:</h2>

@@ -14,7 +14,7 @@
         <div class="inline-block relative w-64">
             <div class="flex flex-col items-center relative">
                 <div x-on:click="open" class="w-full">
-                    <div class="my-2 p-1 flex border border-gray-200 bg-white rounded-full">
+                    <div class="my-2 p-1 flex border border bg-white rounded-full">
                         <div class="flex flex-auto flex-wrap">
 
                             <template x-for="(option,index) in selected" :key="options[option].value">
@@ -35,7 +35,7 @@
                                 </div>
                             </template>
                             <div x-show="selected.length == 0" class="flex-1">
-                                <input placeholder="Species" class="bg-transparent p-1 px-2 appearance-none outline-none h-full w-full text-gray-800 rounded-full" x-bind:value="selectedValues()">
+                                <input placeholder="Filter by species" class="bg-transparent p-1 px-3 appearance-none outline-none h-full w-full text-gray-800 rounded-full" x-bind:value="selectedValues()">
                             </div>
                         </div>
                         <div class="text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200">
@@ -78,10 +78,6 @@
                 </div>
             </div>
         </div>
-
-        @foreach ($species as $specie)
-        {{$specie}}
-        @endforeach
 
         <script>
             function dropdown() {

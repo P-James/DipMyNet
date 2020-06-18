@@ -14,12 +14,9 @@ class FisheryAndWatersSeeder extends Seeder
      */
     public function run()
     {
-        factory(Address::class, 50)->create();
+        factory(Address::class, 100)->create();
 
-        // Fishery::all()->each(function($fishery) {
-        //     $fishery->address()->save(Address::where('fishery_id', $fishery->id)->first());
-        // });
 
-        factory(Water::class, 150)->create();
+        factory(Water::class, 350)->create();
     }
 }
