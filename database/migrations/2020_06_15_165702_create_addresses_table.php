@@ -21,7 +21,7 @@ class CreateAddressesTable extends Migration
             $table->string('county');
             $table->string('post_code');
 
-            $table->unsignedBigInteger('fishery_id');
+            $table->unsignedBigInteger('fishery_id')->nullable();
             // $table->foreign('fishery_id')->references('id')->on('fisheries');
             $table->timestamps();
         });

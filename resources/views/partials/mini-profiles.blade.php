@@ -9,7 +9,7 @@
         <div class="w-full md:w-1/4 bg-cover h-36 md:h-auto" style="background-image: url('https://source.unsplash.com/random/400x400?pond')">
         </div>
         <div class="w-full md:w-2/3 p-4 space-y-2">
-            <h1 class="text-teal-900 font-bold text-xl md:text-2xl"><a href="{{$fishery->path()}}">{{$fishery->name}}</a></h1>
+            <h1 class="text-teal-900 hover:text-teal-700 font-bold text-xl md:text-2xl"><a href="{{$fishery->path()}}">{{$fishery->name}}</a></h1>
             <div class="flex item-center justify-start">
                 <h2 class="w-24 md:w-2/5 flex-shrink-0">Address:</h2>
                 <span class="text-teal-700">{{$fishery->address->line_one}}, {{$fishery->address->town}}, {{$fishery->address->county}}</span>
@@ -24,7 +24,7 @@
             </div>
             <div class="flex item-center justify-start">
                 <h2 class="w-24 md:w-2/5 flex-shrink-0">Waters:</h2>
-                <span class="text-teal-700">@foreach($fishery->waters as $water) {{ $water->type.', ' }} @endforeach</span>
+                <span class="text-teal-700">{{ $fishery->countType('Still Water')}} {{$fishery->countType('River') }}</span>
             </div>
             <div class="flex item-center justify-start">
                 <h2 class="w-24 md:w-2/5 flex-shrink-0">Species:</h2>

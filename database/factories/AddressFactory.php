@@ -12,6 +12,8 @@ $factory->define(Address::class, function (Faker $faker) {
         'town' => $faker->city,
         'county' => $faker->state,
         'post_code' => $faker->postcode,
-        'fishery_id' => factory(\App\Fishery::class)->create()
+        'fishery_id' => function(){
+            return factory(Fishery::class)->create()->id;
+        }
     ];
 });

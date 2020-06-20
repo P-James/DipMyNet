@@ -37,6 +37,10 @@ class FisheriesTable extends Component
                 return ! array_diff($this->species, $fishery->waters->pluck('fish')->toArray());
             });
         }
+        
+        // foreach ($fisheries as $fishery) {
+        //     $ac = array_count_values($fishery->waters->pluck('type')->toArray());
+        // }
 
         return view('livewire.fisheries-table', compact('fisheries'));
     }
