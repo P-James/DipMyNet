@@ -33,10 +33,16 @@ class Fishery extends Model
         return '/fisheries/' . $this->id;
     }
 
+    public function fishTypes()
+    {
+        return $this->waters->pluck('fish')->toArray();
+    }
+
     /**
      * Count the types of waters at the Fishery and return a pre-formatted string.
      * 
      * @param string $type The type of water to count eg 'Still Water' or 'River'
+     * 
      * @return string eg River x3
      */
     public function countType(string $type = null)

@@ -15,7 +15,7 @@ class CreateFisheriesTable extends Migration
     {
         Schema::create('fisheries', function (Blueprint $table) {
             $table->id();
-            $table->string('name');;
+            $table->string('name');
             $table->string('contact');
             $table->json('opening_times');
             $table->json('prices');
@@ -25,6 +25,8 @@ class CreateFisheriesTable extends Migration
 
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+
+            $table->index('name');
         });
     }
 

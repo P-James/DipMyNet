@@ -14,6 +14,6 @@ class FisheryAndWatersSeeder extends Seeder
      */
     public function run()
     {
-        factory(Address::class, 300)->create();
+        factory(Address::class, 500)->create();
     }
 }

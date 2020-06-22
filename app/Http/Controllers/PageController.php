@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function index()
-    {
-        $fisheries = Fishery::all();
-        
-        return view('home', compact('fisheries'));
+    {        
+        return view('home');
     }
 }

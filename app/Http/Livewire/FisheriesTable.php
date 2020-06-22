@@ -10,6 +10,7 @@ class FisheriesTable extends Component
 
     public $search = '';
     public $species = [];
+    public $perPage = 10;
 
     public function selectSpecies($species)
     {
@@ -23,25 +24,26 @@ class FisheriesTable extends Component
         if (!$this->search ) { 
             $fisheries = []; 
         } 
-        if ($this->search && !$this->species) {
-            $fisheries = \App\Fishery::whereLike([
-                'name', 'address.line_one', 'address.line_two', 'address.town', 'address.county', 'address.post_code'
-            ], $this->search)->get();
-        }
-        if ($this->search && $this->species) {
-            $fisheries = \App\Fishery::whereLike([
-                'name', 'address.line_one', 'address.line_two', 'address.town', 'address.county', 'address.post_code'
+        if (!$this->search && $this->species) { 
+            $fisheries = []; 
+        } 
+        if ($this->search) {
+            $fisheries = \App\Fishery::with(['address', 'waters'])
+            ->whereLike([
+                'name', 'address.town', 'address.county', 'address.post_code'
             ], $this->search)
-            ->get()
-            ->filter(function($fishery) {
-                return ! array_diff($this->species, $fishery->waters->pluck('fish')->toArray());
-            });
+            ->orderBy('name')
+            ->paginate($this->perPage);
+
+            if ($this->species) {
+                $fisheries = $fisheries
+                ->filter(function($fishery) {
+                    return ! array_diff($this->species, $fishery->fishTypes());
+                });
+            }
         }
         
-        // foreach ($fisheries as $fishery) {
-        //     $ac = array_count_values($fishery->waters->pluck('type')->toArray());
-        // }
-
+        
         return view('livewire.fisheries-table', compact('fisheries'));
     }
 }
