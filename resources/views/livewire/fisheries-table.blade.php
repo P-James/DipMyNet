@@ -1,5 +1,5 @@
 {{-- Search Bar --}}
-<div class="flex items-center">
+<div class="flex flex-col items-center">
 
     <div class="relative w-full my-4">
 
@@ -16,6 +16,11 @@
         </div>
 
         @include('partials.mini-profiles')
+    </div>
+    <div>
+        @if(count($fisheries) > 0)
+        {{$fisheries->links()}}
+        @endif
     </div>
 
 </div>

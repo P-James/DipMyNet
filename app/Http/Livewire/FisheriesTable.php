@@ -4,9 +4,11 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Fishery;
+use Livewire\WithPagination;
 
 class FisheriesTable extends Component
 {
+    use WithPagination;
 
     public $search = '';
     public $species = [];
@@ -34,6 +36,7 @@ class FisheriesTable extends Component
             ], $this->search)
             ->orderBy('name')
             ->paginate($this->perPage);
+            // dd($fisheries);
 
             if ($this->species) {
                 $fisheries = $fisheries
