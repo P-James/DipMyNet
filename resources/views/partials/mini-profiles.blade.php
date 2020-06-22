@@ -2,6 +2,12 @@
 
 @include('partials.species-select')
 
+@if($search && empty($fisheries))
+<div>
+Your search returned 0 fisheries, please try another search term.
+</div>
+@endif
+
 {{-- Fishery results cards --}}
 @foreach ($fisheries as $fishery)
 <div class="py-6">

@@ -36,7 +36,11 @@ class FisheriesTable extends Component
             ], $this->search)
             ->orderBy('name')
             ->paginate($this->perPage);
-            // dd($fisheries);
+
+            if ($fisheries->count() === 0) {
+                $fisheries = [];
+                return view('livewire.fisheries-table', compact('fisheries'));
+            }
 
             if ($this->species) {
                 $fisheries = $fisheries
