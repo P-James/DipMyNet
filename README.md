@@ -5,4 +5,4 @@ It queries the database using a custom macro inspired by [this article](https://
 
 With some Eloquent optimisations gleaned from [Jonathan Reinink's course](https://eloquent-course.reinink.ca/).
 
-![Demo](https://imgur.com/lFhN3cd)
+![Demo](https://imgur.com/lFhN3cd.gif)
