@@ -18,7 +18,7 @@
         @include('partials.mini-profiles')
     </div>
     <div>
-        @if(count($fisheries) > 0)
+        @if($fisheries instanceof \Illuminate\Pagination\LengthAwarePaginator)
         {{$fisheries->links()}}
         @endif
     </div>
